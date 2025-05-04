@@ -12,6 +12,11 @@ def main():
     running = True
     game.display()
 
+    def save_result(result_message):
+        file = open('result.txt', 'a', encoding='utf-8')
+        file.write(result_message + '\n')
+        file.close()
+
     # Тут запускается основной цикл игры.
     while running:
 
@@ -54,10 +59,14 @@ def main():
         game.display()
 
         if game.check_win(current_player):
-            print(f'Победили {current_player}.')
+            result_message = f'Победили {current_player}.'
+            print(result_message)
+            save_result(result_message)
             running = False
         elif game.is_board_full():
-            print('Ничья!')
+            result_message = 'Ничья!'
+            print(result_message)
+            save_result(result_message)
             running = False
 
         # Тернарный оператор, через который реализована смена игроков.
