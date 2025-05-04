@@ -13,9 +13,8 @@ def main():
     game.display()
 
     def save_result(result_message):
-        file = open('result.txt', 'a', encoding='utf-8')
-        file.write(result_message + '\n')
-        file.close()
+        with open('result.txt', 'a', encoding='utf-8') as f:
+            f.write(result_message + '\n')
 
     # Тут запускается основной цикл игры.
     while running:
